@@ -1,0 +1,15 @@
+en:
+  dry_validation:
+    errors:
+      users:
+        create:
+          rules:
+            email:
+              taken: 'This email has already been taken'
+
+  errors:
+    api:
+      unauthorized:
+        default_message: 'Missing or invalid authorization'
+      validation_failed:
+        default_message: 'Validation failed'

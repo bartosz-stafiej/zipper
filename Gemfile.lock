@@ -102,6 +102,42 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dry-configurable (0.16.1)
+      dry-core (~> 0.6)
+      zeitwerk (~> 2.6)
+    dry-container (0.11.0)
+      concurrent-ruby (~> 1.0)
+    dry-core (0.9.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (0.3.0)
+    dry-initializer (3.1.1)
+    dry-logic (1.3.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.9, >= 0.9)
+      zeitwerk (~> 2.6)
+    dry-schema (1.11.2)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.16, >= 0.16)
+      dry-core (~> 0.9, >= 0.9)
+      dry-initializer (~> 3.0)
+      dry-logic (~> 1.3)
+      dry-types (~> 1.6)
+      zeitwerk (~> 2.6)
+    dry-types (1.6.1)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.3)
+      dry-core (~> 0.9, >= 0.9)
+      dry-inflector (~> 0.1, >= 0.1.2)
+      dry-logic (~> 1.3, >= 1.3)
+      zeitwerk (~> 2.6)
+    dry-validation (1.9.0)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.7, >= 0.7.1)
+      dry-core (~> 0.9, >= 0.9)
+      dry-initializer (~> 3.0)
+      dry-schema (~> 1.11, >= 1.11.0)
+      zeitwerk (~> 2.6)
     equalizer (0.0.11)
     erubi (1.11.0)
     factory_bot (6.2.1)
@@ -121,6 +157,18 @@ GEM
       sexp_processor (~> 4.8)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    grape (1.6.2)
+      activesupport
+      builder
+      dry-types (>= 1.1)
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+    grape-entity (0.10.2)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.3.2)
+    grape_on_rails_routes (0.3.2)
+      rails (>= 3.1.1)
     haml (6.0.8)
       temple (>= 0.8.2)
       thor
@@ -137,6 +185,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.2)
+    jwt (2.4.1)
     kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -154,6 +203,11 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.3)
     msgpack (1.6.0)
+    multi_json (1.15.0)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    mustermann-grape (1.0.2)
+      mustermann (>= 1.0.0)
     net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
@@ -177,6 +231,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
     rack-proxy (0.7.4)
@@ -263,6 +319,7 @@ GEM
     rubocop-rspec (2.14.2)
       rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     ruby_parser (3.19.1)
       sexp_processor (~> 4.16)
     rubycritic (4.7.0)
@@ -357,9 +414,14 @@ DEPENDENCIES
   byebug
   capybara
   database_cleaner-active_record
+  dry-validation
   factory_bot_rails
+  grape
+  grape-entity
+  grape_on_rails_routes
   haml-rails
   jbuilder
+  jwt
   listen
   pry
   puma

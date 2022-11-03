@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'attachments#index'
-
-  resources :attachments, only: %i[new create]
+  mount Api::V1::Base => '/'
 end
