@@ -27,7 +27,7 @@ module Api
             created_attachment = creator.call
 
             status 201
-            present created_attachment, password: random_password, with: Entities::Attachments::Details
+            present created_attachment, password: random_password, with: Entities::Attachment
           end
         end
       end

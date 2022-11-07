@@ -21,7 +21,7 @@ module Api
             user = User.create!(validation_results)
 
             status 200
-            present user.attributes, with: Entities::Users::UserDetails
+            present user.attributes, with: Entities::User
           end
         end
       end

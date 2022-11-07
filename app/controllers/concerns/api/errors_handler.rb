@@ -21,6 +21,12 @@ module Api
       handle_api_error(unauthorized)
     end
 
+    def handle_pagy_variables(error)
+      unauthorized = Api::Errors::BadRequest.new(error.message)
+
+      handle_api_error(unauthorized)
+    end
+
     private
 
     def create_error_body(error)
