@@ -16,6 +16,7 @@ gem 'jwt'
 gem 'puma'
 gem 'rails', '~> 7.0.2'
 gem 'redis'
+gem 'rubyzip'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'sqlite3'
@@ -42,9 +43,9 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers'
-  gem 'database_cleaner-active_record'
-  gem 'simplecov'
   gem 'capybara'
+  gem 'database_cleaner-active_record'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
   gem 'webdrivers'
 end

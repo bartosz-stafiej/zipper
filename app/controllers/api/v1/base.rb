@@ -5,12 +5,14 @@ module Api
     class Base < Grape::API
       include Api::ErrorsRescuer
       helpers Api::ErrorsHandler
+      helpers Api::AuthHelper
 
       prefix 'api'
       version 'v1', using: :path
 
       mount Api::V1::Auth::Login
       mount Api::V1::Users::SignUp
+      mount Api::V1::Attachments::Create
     end
   end
 end

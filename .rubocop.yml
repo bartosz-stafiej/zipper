@@ -10,6 +10,7 @@ Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'spec/**/*_spec.rb'
 
 Metrics/MethodLength:
   Exclude:
@@ -18,6 +19,11 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'app/services/attachments/files_zipper.rb'
+      # https://stackoverflow.com/questions/51501992/is-there-such-a-thing-as-opening-a-stringio-for-writing
 
 Layout/LineLength:
   Exclude:

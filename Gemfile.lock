@@ -434,6 +434,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubycritic
+  rubyzip
   sass-rails
   shoulda-matchers
   simple_form
