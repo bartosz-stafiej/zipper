@@ -1,14 +1,14 @@
-%table.table
-  %thead
-    %tr
-      %th Data utworzenia
-      %th Nazwa pliku
-      %th Rozmiar
-      %th Link
-  %tbody
-    - @attachments.each do |attachment|
-      %tr
-        %td= attachment.created_at.to_date
-        %td= attachment.zip_file.filename
-        %td= attachment.zip_file.byte_size
-        %td= link_to 'Pobierz', attachment.zip_file
+<!--%table.table-->
+<!--  %thead-->
+<!--    %tr-->
+<!--      %th Data utworzenia-->
+<!--      %th Nazwa pliku-->
+<!--      %th Rozmiar-->
+<!--      %th Link-->
+<!--  %tbody-->
+<!--    - @attachments.each do |attachment|-->
+<!--      %tr-->
+<!--        %td= attachment.created_at.to_date-->
+<!--        %td= attachment.zip_file.filename-->
+<!--        %td= attachment.zip_file.byte_size-->
+<!--        %td= link_to 'Pobierz', attachment.zip_file-->
