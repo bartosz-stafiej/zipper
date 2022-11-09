@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import  {ATTACHMENTS_LIST_PATH, LOGIN_PATH } from '../../constants/paths';
+import  { ATTACHMENTS_LIST_PATH, LOGIN_PATH } from '../../constants/paths';
 import { SignInInput } from '../../types/auth'
 import AuthService from '../../services/AuthService';
 import useAuthContext from '../../contexts/useAuthContext';

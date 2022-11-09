@@ -6,7 +6,7 @@ import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import Header from './shared/Header';
 import Flash from './shared/Flash';
-import {ATTACHMENTS_LIST_PATH, LOGIN_PATH, NEW_ATTACHMENTS_PATH, SIGN_UP_PATH} from '../constants/paths';
+import { ATTACHMENTS_LIST_PATH, LOGIN_PATH, NEW_ATTACHMENTS_PATH, SIGN_UP_PATH } from '../constants/paths';
 import useAuthContext from '../contexts/useAuthContext';
 import _ from 'lodash';
 

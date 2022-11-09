@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ATTACHMENTS_LIST_PATH, SIGN_UP_PATH } from '../../constants/paths';
 import { SignInInput } from '../../types/auth'
 import AuthService from '../../services/AuthService';
