@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'attachments#index'
+  mount Api::V1::Base => '/'
+  mount GrapeSwaggerRails::Engine => '/swagger' unless Rails.env.production?
 
-  resources :attachments, only: %i[new create]
+  draw(:views)
 end

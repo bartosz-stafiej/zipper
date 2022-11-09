@@ -1,0 +1,27 @@
+en:
+  dry_validation:
+    errors:
+      users:
+        create:
+          rules:
+            email:
+              taken: 'This email has already been taken'
+      attachments:
+        create:
+          rules:
+            files:
+              size_too_big: 'Max file size is 1 GB'
+
+  errors:
+    api:
+      unauthorized:
+        default_message: 'Missing or invalid authorization'
+      validation_failed:
+        default_message: 'Validation failed'
+      bad_request:
+        default_message: 'Bad Request'
+        uploads:
+          conflict: 'Trying to add already existing file in zip'
+      not_found:
+        default_message: 'Could not find resource'
+        model_by: "Couldn't find %{model} with '%{by}'=%{value}"
