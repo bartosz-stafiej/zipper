@@ -2,9 +2,8 @@
 
 require 'capybara/rails'
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new app, browser: :chrome,
-                                      options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
 end
-
-Capybara.javascript_driver = :chrome
