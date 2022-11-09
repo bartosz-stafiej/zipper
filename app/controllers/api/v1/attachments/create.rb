@@ -22,7 +22,8 @@ module Api
             validation_results = contract_validator.validate!
 
             random_password = SecureRandom.hex(PASSWORD_LENGTH)
-            creator = ::Attachments::Creator.new(data: validation_results, user: current_user,
+            creator = ::Attachments::Creator.new(data: validation_results,
+                                                 user: current_user,
                                                  password: random_password)
             created_attachment = creator.call
 
