@@ -16,13 +16,8 @@ const NewAttachment = ({ setFlash }) => {
 
   const clickHiddenFileInput = (e) => {
     e.preventDefault();
-
     const element = hiddenFileInput.current as unknown as HTMLInputElement;
     element.click();
-  }
-
-  const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilesInput([...filesInput, e.target.files[0]])
   }
 
   const createAttachment = (e) => {
@@ -36,11 +31,11 @@ const NewAttachment = ({ setFlash }) => {
     }).catch(_e => setIsErrored(true))
   };
 
-  const removeFile = (key) => {
-    const newFilesInput = filesInput;
-    newFilesInput.splice(key, 1);
-    setFilesInput(newFilesInput);
-  };
+  const submitButtonClass = () => {
+    return _.isEmpty(filesInput) ?
+      'text-gray-500 border bg-white rounded-md p-2 cursor-default' :
+      'bg-blue-500 text-white rounded-md p-2';
+  }
 
   if(_.isEmpty(user)) navigate(LOGIN_PATH);
 
@@ -62,7 +57,11 @@ const NewAttachment = ({ setFlash }) => {
                 <div className="w-3/4 truncate">{file.name}</div>
                 <div
                   className="cursor-pointer w-1/4 flex justify-content-end"
-                  onClick={() => removeFile(key)}
+                  onClick={() => {
+                    const newFilesInput = filesInput;
+                    newFilesInput.splice(key, 1);
+                    setFilesInput([...newFilesInput]);
+                  }}
                 >
                   <div className="text-blue-500">Usun</div>
                 </div>
@@ -81,13 +80,14 @@ const NewAttachment = ({ setFlash }) => {
             type="file"
             className="hidden"
             ref={hiddenFileInput}
-            onChange={onFileInputChange}
+            onChange={(e) => setFilesInput([...filesInput, e.target.files[0]])}
           />
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-blue-500 text-white rounded-md p-2"
+              className={submitButtonClass()}
               onClick={createAttachment}
+              disabled={_.isEmpty(filesInput)}
             >
               Stworz Plik
             </button>

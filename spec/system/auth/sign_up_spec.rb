@@ -13,6 +13,7 @@ RSpec.describe('Sign up flow', type: :system) do
     click_on 'sign_up'
     expect(page).to(have_content('Rejestracja pomyslna'))
     expect(page).to(have_current_path('/sign_in'))
+    expect(User.count).to(eq(1))
   end
 
   context 'invalid request' do

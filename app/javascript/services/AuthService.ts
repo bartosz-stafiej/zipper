@@ -5,10 +5,10 @@ import { LOGIN_PATH } from '../constants/paths';
 
 class AuthService {
   async signUp(input) {
-    return await axios.post('/api/v1//users/sign_up', input).then((res) => {
+    return await axios.post('/api/v1/users/sign_up', input).then((res) => {
       if(res.status === 200) return res;
     }).catch((e) => {
-      return e
+      return e;
     })
   };
 

@@ -9,31 +9,23 @@ module Attachments
     end
 
     def call
-      attachment = Attachment.create!(owner: @user)
       zip_file = create_zip_file
 
-      attachment.zip_file.attach(
-        {
+      Attachment.create!(
+        owner: @user,
+        zip_file: {
           io: zip_file,
-          filename: zip_filename(attachment),
+          filename: "siepomaga_#{DateTime.now}.zip",
           content_type: 'application/zip'
         }
       )
-
-      attachment
     end
 
     private
 
     def create_zip_file
-      zip_file_creator =
-        Attachments::FilesZipper.new(files: @data[:files], password: @password)
-
+      zip_file_creator = Attachments::FilesZipper.new(files: @data[:files], password: @password)
       zip_file_creator.call
-    end
-
-    def zip_filename(attachment)
-      "siepomaga_#{attachment.created_at.to_date}.zip"
     end
   end
 end

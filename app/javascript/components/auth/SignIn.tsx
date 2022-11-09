@@ -17,15 +17,11 @@ const SignIn = ({ setFlash }) => {
     e.preventDefault();
 
     await AuthService.signIn(input).then((res) => {
-      if (res.status === 200) {
-        setFlash('Logowanie pomyslne')
+      if (res.status !== 200) return setIsErrored(true);
 
+        setFlash('Logowanie pomyslne')
         navigate(ATTACHMENTS_LIST_PATH);
         window.location.reload();
-        return;
-      }
-
-      setIsErrored(true);
     });
   };
 

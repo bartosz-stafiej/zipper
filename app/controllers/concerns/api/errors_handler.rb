@@ -8,12 +8,6 @@ module Api
       handle_api_error(unauthorized)
     end
 
-    def handle_api_error(error)
-      error_body = create_error_body(error)
-
-      error!(error_body, error.status)
-    end
-
     def handle_upload_conflict(_error)
       error_message = I18n.t('errors.api.bad_request.uploads.conflict')
       unauthorized = Api::Errors::BadRequest.new(error_message)
@@ -31,6 +25,12 @@ module Api
       not_found = Api::Errors::NotFound.new(error.message)
 
       handle_api_error(not_found)
+    end
+
+    def handle_api_error(error)
+      error_body = create_error_body(error)
+
+      error!(error_body, error.status)
     end
 
     private

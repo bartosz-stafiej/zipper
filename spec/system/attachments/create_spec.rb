@@ -28,6 +28,7 @@ RSpec.describe('Create attachment flow', type: :system) do
       click_on 'Stworz Plik'
       expect(page).to(have_current_path('/attachments'))
       expect(page).to(have_content('Utworzono plik pomyslnie'))
+      expect(Attachment.count).to(eq(1))
     end
   end
 

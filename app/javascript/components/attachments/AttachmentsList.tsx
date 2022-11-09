@@ -14,22 +14,27 @@ const AttachmentsList = () => {
   const [itemsCount, setItemsCount] = useState(10);
   const [attachments, setAttachments] = useState([]);
 
-  if (_.isEmpty(user)) navigate(LOGIN_PATH);
-
-  const fetchAttachments = async (page) => {
-    return await AttachmentsService.fetchAttachments(page, itemsCount).then(res => res.data);
+  const renderNextPage = async (page) => {
+    await fetchNextPage(page);
+    await setPageNumber(page);
   }
 
   const fetchNextPage = async (page) => {
-      const fetchedAttachments = await fetchAttachments(page);
-      await setAttachments(fetchedAttachments);
+    const fetchedAttachments = await fetchAttachments(page);
+    await setAttachments(fetchedAttachments);
   }
+
+  const fetchAttachments = async (page) => {
+    return await AttachmentsService.fetchAttachments(page, itemsCount).then(res => res.data);
+  };
 
   useEffect(() => {
     fetchAttachments(pageNumber).then((fetchedAttachments) => {
       setAttachments(fetchedAttachments)
     });
   }, [])
+
+  if (_.isEmpty(user)) navigate(LOGIN_PATH);
 
   return (
     <div className="flex flex-col">
@@ -68,12 +73,7 @@ const AttachmentsList = () => {
               {
                 pageNumber > 1 &&
                   <div
-                    onClick={async () => {
-                      const currentPage = pageNumber - 1;
-
-                      await fetchNextPage(currentPage);
-                      await setPageNumber(currentPage);
-                    }}
+                    onClick={() => renderNextPage(pageNumber - 1)}
                     className={`inline-flex items-center py-2 px-4 text-sm font-medium
                       text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100
                       hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
@@ -86,12 +86,7 @@ const AttachmentsList = () => {
               {
                 attachments.length === itemsCount &&
                   <div
-                    onClick={async () => {
-                      const currentPage = pageNumber + 1;
-
-                      await fetchNextPage(currentPage);
-                      await setPageNumber(currentPage);
-                    }}
+                    onClick={() => renderNextPage(pageNumber + 1)}
                     className={`inline-flex items-center py-2 px-4 ml-3 text-sm
                   font-medium text-gray-500 bg-white rounded-lg border border-gray-300
                   hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700

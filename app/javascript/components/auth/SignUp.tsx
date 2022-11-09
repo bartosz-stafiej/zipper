@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {ATTACHMENTS_LIST_PATH, LOGIN_PATH, SIGN_UP_PATH} from '../../constants/paths';
+import { useNavigate } from 'react-router-dom';
+import  {ATTACHMENTS_LIST_PATH, LOGIN_PATH } from '../../constants/paths';
 import { SignInInput } from '../../types/auth'
 import AuthService from '../../services/AuthService';
 import useAuthContext from '../../contexts/useAuthContext';
@@ -17,14 +17,10 @@ const SignUp = ({ setFlash }) => {
     e.preventDefault();
 
     await AuthService.signUp(input).then((res) => {
-      if (res.status === 200) {
-        setFlash('Rejestracja pomyslna')
+      if (res.status !== 200) return setIsErrored(true);
 
+        setFlash('Rejestracja pomyslna');
         navigate(LOGIN_PATH);
-        return;
-      }
-
-      setIsErrored(true);
     });
   };
 

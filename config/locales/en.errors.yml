@@ -21,7 +21,7 @@ en:
       bad_request:
         default_message: 'Bad Request'
         uploads:
-          conflict: 'Trying to add already existing in zip file'
+          conflict: 'Trying to add already existing file in zip'
       not_found:
         default_message: 'Could not find resource'
         model_by: "Couldn't find %{model} with '%{by}'=%{value}"
