@@ -27,6 +27,12 @@ module Api
       handle_api_error(unauthorized)
     end
 
+    def handle_not_found(error)
+      not_found = Api::Errors::NotFound.new(error.message)
+
+      handle_api_error(not_found)
+    end
+
     private
 
     def create_error_body(error)

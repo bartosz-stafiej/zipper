@@ -5,7 +5,7 @@ RSpec.shared_examples 'invalid_authorization' do
     let(:expected_message) { I18n.t('errors.api.unauthorized.default_message') }
 
     it 'has 401 response code' do
-      expect(response.status).to(eq(401))
+      expect(response).to(have_http_status(401))
     end
 
     it 'returns error message id json_response' do

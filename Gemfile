@@ -7,6 +7,7 @@ ruby '3.1.2'
 
 gem 'bcrypt'
 gem 'bootsnap'
+gem 'dotenv-rails'
 gem 'dry-validation'
 gem 'grape'
 gem 'grape-entity'
@@ -14,6 +15,7 @@ gem 'grape-pagy'
 gem 'jbuilder'
 gem 'jwt'
 gem 'puma'
+gem 'rack-cors'
 gem 'rails', '~> 7.0.2'
 gem 'react_on_rails'
 gem 'redis'
@@ -22,7 +24,6 @@ gem 'sass-rails'
 gem 'sqlite3'
 gem 'turbolinks'
 gem 'webpacker'
-
 
 group :development, :test do
   gem 'byebug'
@@ -46,7 +47,7 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner-active_record'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'webdrivers'
 end

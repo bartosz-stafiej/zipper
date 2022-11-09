@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
+require 'capybara/rails'
+
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  Capybara::Selenium::Driver.new app, browser: :chrome,
+                                      options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
 end
 
-Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: {
-      args: %w[headless enable-features=NetworkService,NetworkServiceInProcess]
-    }
-  )
-
-  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
-end
-
-Capybara.default_driver = :headless_chrome
-Capybara.javascript_driver = :headless_chrome
+Capybara.javascript_driver = :chrome

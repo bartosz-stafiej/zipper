@@ -5,5 +5,6 @@ class User < ApplicationRecord
 
   has_many :attachments,
            inverse_of: :owner,
-           dependent: :destroy
+           dependent: :destroy,
+           foreign_key: :owner_id
 end

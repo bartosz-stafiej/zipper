@@ -13,6 +13,7 @@ module Api
 
       mount Api::V1::Auth::Login
       mount Api::V1::Users::SignUp
+      mount Api::V1::Users::Me
       mount Api::V1::Attachments::Create
       mount Api::V1::Attachments::Index
     end
